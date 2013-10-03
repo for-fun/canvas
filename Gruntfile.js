@@ -22,10 +22,12 @@ module.exports = function (grunt) {
 					'<%= conf.path %>/**/sass/*.sass',
 					'<%= conf.path %>/**/sass/*.scss'
 				],
-				tasks: ['compass:dev', 'asd']
+				tasks: ['compass:dev']
 			},
 			livereload: {
 				files: [
+					'<%= conf.path %>/**/sass/*.sass',
+					'<%= conf.path %>/**/sass/*.scss',
 					'<%= conf.path %>/**/*.html',
 					'<%= conf.path %>/**/scripts/*.js'
 				],
