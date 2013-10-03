@@ -1,0 +1,7 @@
+/* line 1, ../../sass/style.sass */
+canvas {
+  width: 1110px;
+  display: block;
+  margin: 0 auto;
+  background-color: black;
+}
