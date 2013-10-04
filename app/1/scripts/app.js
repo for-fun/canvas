@@ -31,7 +31,7 @@ $(function () {
 		var config = {
 			x: document.body.clientWidth / 2,
 			y: document.body.clientHeight / 2,
-			radius: 5,
+			radius: 30,
 			ySpeed: getRandomRange(-5, 5),
 			xSpeed: getRandomRange(-5, 5),
 			color: getRandomInt(0, 7),
@@ -48,14 +48,20 @@ $(function () {
 			config = array[i];
 
 			c.beginPath();
-			c.arc(config.x, config.y, config.radius, 0, config.pi);
+			c.arc(config.x + getRandomInt(-20, 20), config.y + getRandomInt(-20, 20), config.radius, 0, config.pi);
 			c.fillStyle = arrayColor[config.color];
-//			c.globalAlpha = config.alpha * 0.8;
+			c.globalAlpha = 0.3;
 //			console.log(c.globalAlpha);
 			c.fill();
 			config.x = config.x + config.xSpeed;
 			config.y = config.y + config.ySpeed;
-			config.radius = config.radius * 0.99;
+			console.log(config.radius);
+			if (config.radius > 100) {
+				config.radius = config.radius * 1.01;
+			} else {
+
+				config.radius = config.radius * 0.99;
+			}
 		}
 	}
 });
