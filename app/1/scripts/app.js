@@ -28,7 +28,7 @@ var go = function(type) {
 		var config = {
 			x: document.body.clientWidth / 2,
 			y: document.body.clientHeight / 2,
-			radius: 50,
+			radius: 30,
 			ySpeed: getRandomInt(-5, 5),
 			xSpeed: getRandomInt(-5, 5),
 			color: getRandomInt(0, 7),
@@ -39,8 +39,6 @@ var go = function(type) {
 		if (type === 1) {
 			config.radius = 20;
 			config.alpha = 1;
-		}
-		if (type === 2) {
 		}
 
 		array.push(config);
@@ -56,7 +54,7 @@ var go = function(type) {
 				c.arc(config.x, config.y, config.radius, 0, config.pi);
 			}
 			if (type === 2) {
-				c.arc(config.x + getRandomInt(-80, 80), config.y + getRandomInt(-80, 80), config.radius, 0, config.pi);
+				c.arc(config.x + getRandomInt(-30, 30), config.y + getRandomInt(-30, 30), config.radius, 0, config.pi);
 			}
 			c.fillStyle = arrayColor[config.color];
 			if (config.alpha < 0.8) {
@@ -69,7 +67,6 @@ var go = function(type) {
 			if (config.radius > 100) {
 				config.radius = config.radius * 1.01;
 			} else {
-
 				config.radius = config.radius * 0.99;
 			}
 		}
@@ -77,5 +74,3 @@ var go = function(type) {
 
 	setInterval(draw, 1);
 };
-
-go(1);
