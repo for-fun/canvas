@@ -1,43 +1,47 @@
-function getRandomRange(min, max) {
-	return Math.random() * (max - min) + min;
-}
 function getRandomInt(min, max) {
 	return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-$(function () {
-	var canvas = document.getElementById('canvas');
-	canvas.width = window.innerWidth;
-	canvas.height = window.innerHeight;
-	var c = canvas.getContext('2d');
 
-	var array = [];
+var canvas = document.getElementById('canvas');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+var c = canvas.getContext('2d');
 
-	var arrayColor = [
-		'green',
-		'#00FFF4',
-		'#0099FF',
-		'#CCFF33',
-		'#CC0066',
-		'#6600FF',
-		'#FFFF00',
-		'#fff'
-	];
+var array = [];
+
+var arrayColor = [
+	'green',
+	'#00FFF4',
+	'#0099FF',
+	'#CCFF33',
+	'#CC0066',
+	'#6600FF',
+	'#FFFF00',
+	'#fff'
+];
 
 
-	setInterval(draw, 1);
 
-	function draw() {
+var go = function(type) {
+	var draw = function () {
 
 		var config = {
 			x: document.body.clientWidth / 2,
 			y: document.body.clientHeight / 2,
-			radius: 20,
-			ySpeed: getRandomRange(-5, 5),
-			xSpeed: getRandomRange(-5, 5),
+			radius: 50,
+			ySpeed: getRandomInt(-5, 5),
+			xSpeed: getRandomInt(-5, 5),
 			color: getRandomInt(0, 7),
 			pi: 2 * Math.PI,
-			alpha: 1
+			alpha: 0.3
 		};
+
+		if (type === 1) {
+			config.radius = 20;
+			config.alpha = 1;
+		}
+		if (type === 2) {
+		}
 
 		array.push(config);
 
@@ -48,14 +52,20 @@ $(function () {
 			config = array[i];
 
 			c.beginPath();
-			c.arc(config.x + getRandomInt(-0, 0), config.y + getRandomInt(-0, 0), config.radius, 0, config.pi);
+			if (type === 1) {
+				c.arc(config.x, config.y, config.radius, 0, config.pi);
+			}
+			if (type === 2) {
+				c.arc(config.x + getRandomInt(-80, 80), config.y + getRandomInt(-80, 80), config.radius, 0, config.pi);
+			}
 			c.fillStyle = arrayColor[config.color];
-			c.globalAlpha = 0.3;
-//			console.log(c.globalAlpha);
+			if (config.alpha < 0.8) {
+				config.alpha = config.alpha * 1.2;
+				c.globalAlpha = config.alpha.toFixed(2)	;
+			}
 			c.fill();
 			config.x = config.x + config.xSpeed;
 			config.y = config.y + config.ySpeed;
-			console.log(config.radius);
 			if (config.radius > 100) {
 				config.radius = config.radius * 1.01;
 			} else {
@@ -63,5 +73,9 @@ $(function () {
 				config.radius = config.radius * 0.99;
 			}
 		}
-	}
-});
+	};
+
+	setInterval(draw, 1);
+};
+
+go(1);
