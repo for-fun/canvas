@@ -39,9 +39,9 @@ module.exports = function (grunt) {
 		compass: {
 			dev: {
 				options: {
-					sassDir: '<%= conf.path %>/1/sass',
-					cssDir: '<%= conf.path %>/1/assets/css',
-					imagesDir: '<%= conf.path %>/1/assets/images',
+					sassDir: '<%= conf.path %>/2/sass',
+					cssDir: '<%= conf.path %>/2/assets/css',
+					imagesDir: '<%= conf.path %>/2/assets/images',
 					relativeAssets: true,
 					outputStyle: 'expanded'
 				}
@@ -67,7 +67,7 @@ module.exports = function (grunt) {
 		},
 		open: {
 			server: {
-				url: 'http://localhost:<%= connect.options.port %>/1/index.html'
+				url: 'http://localhost:<%= connect.options.port %>/2/2.html'
 			}
 		}
 	});
