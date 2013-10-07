@@ -67,7 +67,7 @@ module.exports = function (grunt) {
 		},
 		open: {
 			server: {
-				url: 'http://localhost:<%= connect.options.port %>/2/2.html'
+				url: 'http://localhost:<%= connect.options.port %>/2/1.html'
 			}
 		}
 	});
